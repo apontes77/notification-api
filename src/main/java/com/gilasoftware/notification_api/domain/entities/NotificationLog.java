@@ -2,14 +2,15 @@ package com.gilasoftware.notification_api.domain.entities;
 
 import com.gilasoftware.notification_api.domain.enums.NotificationChannel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
 @Getter
+@NoArgsConstructor
+@Setter
 public class NotificationLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
