@@ -6,6 +6,7 @@ import com.gilasoftware.notification_api.domain.services.NotificationService;
 import com.gilasoftware.notification_api.infrastructure.repository.NotificationRepository;
 import com.gilasoftware.notification_api.infrastructure.routes.request.MessageRequest;
 import com.gilasoftware.notification_api.infrastructure.routes.response.NotificationResponse;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class NotificationController {
 
     // Endpoint para criar mensagem e enviar notificações
     @PostMapping
-    public ResponseEntity<NotificationResponse> sendNotification(@RequestBody MessageRequest messageRequest) {
+    public ResponseEntity<NotificationResponse> sendNotification(@RequestBody @Valid MessageRequest messageRequest) {
         Message message = new Message();
         message.setCategory(messageRequest.getCategory());
         message.setBody(messageRequest.getBody());
