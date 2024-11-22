@@ -7,6 +7,7 @@ import com.gilasoftware.notification_api.infrastructure.repository.NotificationR
 import com.gilasoftware.notification_api.infrastructure.routes.request.MessageRequest;
 import com.gilasoftware.notification_api.infrastructure.routes.response.NotificationResponse;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,15 +15,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/notifications")
+@RequiredArgsConstructor
 public class NotificationController {
 
     private final NotificationService notificationService;
     private final NotificationRepository logRepository;
-
-    public NotificationController(NotificationService notificationService, NotificationRepository logRepository) {
-        this.notificationService = notificationService;
-        this.logRepository = logRepository;
-    }
 
     // Endpoint para criar mensagem e enviar notificações
     @PostMapping

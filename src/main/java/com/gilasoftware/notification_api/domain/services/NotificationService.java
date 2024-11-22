@@ -8,6 +8,7 @@ import com.gilasoftware.notification_api.domain.notification.NotificationSender;
 import com.gilasoftware.notification_api.domain.strategy.NotificationStrategy;
 import com.gilasoftware.notification_api.infrastructure.repository.NotificationRepository;
 import com.gilasoftware.notification_api.infrastructure.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -15,17 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class NotificationService {
 
     private final NotificationStrategy notificationStrategy;
     private final UserRepository userRepository;
     private final NotificationRepository logRepository;
-
-    public NotificationService(NotificationStrategy notificationStrategy, UserRepository userRepository, NotificationRepository logRepository) {
-        this.notificationStrategy = notificationStrategy;
-        this.userRepository = userRepository;
-        this.logRepository = logRepository;
-    }
 
     public List<NotificationLog> sendNotifications(Message message) {
         List<NotificationLog> logs = new ArrayList<>();

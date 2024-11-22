@@ -6,19 +6,16 @@ import com.gilasoftware.notification_api.domain.notification.impl.EmailNotificat
 import com.gilasoftware.notification_api.domain.notification.impl.PushNotificationSender;
 import com.gilasoftware.notification_api.domain.notification.impl.SmsNotificationSender;
 import com.gilasoftware.notification_api.domain.strategy.NotificationStrategy;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class NotificationStrategyImpl implements NotificationStrategy {
     private final SmsNotificationSender smsSender;
     private final EmailNotificationSender emailSender;
     private final PushNotificationSender pushSender;
 
-    public NotificationStrategyImpl(SmsNotificationSender smsSender, EmailNotificationSender emailSender, PushNotificationSender pushSender) {
-        this.smsSender = smsSender;
-        this.emailSender = emailSender;
-        this.pushSender = pushSender;
-    }
 
     @Override
     public NotificationSender getSender(NotificationChannel channel) {
